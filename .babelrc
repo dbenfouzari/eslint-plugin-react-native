@@ -1,11 +1,13 @@
 {
-  "presets": ["@babel/env", "@babel/preset-typescript"],
-  "plugins": [
+  "presets": [
     [
-      "@babel/plugin-transform-runtime",
+      "@babel/env",
       {
-        "regenerator": true
+        "targets": {
+          "esmodules": true
+        }
       }
-    ]
+    ],
+    "@babel/preset-typescript"
   ]
 }
