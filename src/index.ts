@@ -573,13 +573,15 @@ module.exports = {
 
           "VariableDeclarator > Literal"(node) {
             // allow statements like const A_B = "test"
-            if (isUpperCase(node.parent.id.name)) visited.add(node);
+            // if (isUpperCase(node.parent.id.name)) visited.add(node);
+            visited.add(node);
           },
 
           "VariableDeclarator > ArrayExpression > Literal"(node) {
             // allow statements like const A_B = ["test"]
-            const declarator = getNearestAncestor(node, "VariableDeclarator");
-            if (isUpperCase(declarator.id.name)) visited.add(node);
+            // const declarator = getNearestAncestor(node, "VariableDeclarator");
+            // if (isUpperCase(declarator.id.name)) visited.add(node);
+            visited.add(node);
           },
 
           "Property > Literal"(node) {
