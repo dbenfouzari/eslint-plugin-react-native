@@ -1,6 +1,6 @@
 {
   "name": "@dbenfouzari/eslint-plugin-react-native",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "license": "MIT",
   "description": "Derniercri ESLint plugin for React-Native",
@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/dbenfouzari/eslint-plugin-react-native#readme",
   "scripts": {
-    "build": "babel --extensions \".ts\" --out-dir lib index.ts",
+    "build": "babel --extensions \".ts\" src --out-dir lib --no-comments",
     "test": "jest",
     "prepare": "yarn build"
   },
