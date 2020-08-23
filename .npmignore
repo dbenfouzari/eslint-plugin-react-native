@@ -2,3 +2,4 @@ src/
 yarn.lock
 node_modules/
 tests/
+.github/
