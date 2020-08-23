@@ -216,17 +216,17 @@ function isUpperCase(str) {
 //   return false;
 // }
 
-function generateFullMatchRegExp(source) {
-  if (source instanceof RegExp) {
-    return source;
-  }
-  //   if (typeof source !== "string") {
-  //     console.error("generateFullMatchRegExp: expect string but get", source);
-  //     return new RegExp();
-  //   }
-  // allow dot ahead
-  return new RegExp(`(^|\\.)${source}${source.endsWith("$") ? "" : "$"}`);
-}
+// function generateFullMatchRegExp(source) {
+//   if (source instanceof RegExp) {
+//     return source;
+//   }
+//   //   if (typeof source !== "string") {
+//   //     console.error("generateFullMatchRegExp: expect string but get", source);
+//   //     return new RegExp();
+//   //   }
+//   // allow dot ahead
+//   return new RegExp(`(^|\\.)${source}${source.endsWith("$") ? "" : "$"}`);
+// }
 //#endregion
 
 //------------------------------------------------------------------------------
@@ -309,42 +309,42 @@ module.exports = {
           return whitelists.some((item) => item.test(str));
         }
 
-        const popularCallee = [
-          /^i18n(ext)?$/,
-          "t",
-          "require",
-          "addEventListener",
-          "removeEventListener",
-          "postMessage",
-          "getElementById",
-          //
-          // ─── VUEX CALLEE ────────────────────────────────────────────────────────────────
-          //
-          "dispatch",
-          "commit",
-          // ────────────────────────────────────────────────────────────────────────────────
+        // const popularCallee = [
+        //   /^i18n(ext)?$/,
+        //   "t",
+        //   "require",
+        //   "addEventListener",
+        //   "removeEventListener",
+        //   "postMessage",
+        //   "getElementById",
+        //   //
+        //   // ─── VUEX CALLEE ────────────────────────────────────────────────────────────────
+        //   //
+        //   "dispatch",
+        //   "commit",
+        //   // ────────────────────────────────────────────────────────────────────────────────
 
-          "includes",
-          "indexOf",
-          "endsWith",
-          "startsWith",
-        ];
+        //   "includes",
+        //   "indexOf",
+        //   "endsWith",
+        //   "startsWith",
+        // ];
 
-        const validCalleeList = [
-          ...popularCallee,
-          ...((option && option.ignoreCallee) || []),
-        ].map(generateFullMatchRegExp);
+        // const validCalleeList = [
+        //   ...popularCallee,
+        //   ...((option && option.ignoreCallee) || []),
+        // ].map(generateFullMatchRegExp);
 
-        function isValidFunctionCall({ callee }) {
-          // let calleeName = callee.name;
-          if (callee.type === "Import") return true;
+        // function isValidFunctionCall({ callee }) {
+        //   // let calleeName = callee.name;
+        //   if (callee.type === "Import") return true;
 
-          const sourceText = context.getSourceCode().getText(callee);
+        //   const sourceText = context.getSourceCode().getText(callee);
 
-          return validCalleeList.some((item) => {
-            return item.test(sourceText);
-          });
-        }
+        //   return validCalleeList.some((item) => {
+        //     return item.test(sourceText);
+        //   });
+        // }
 
         // const ignoredObjectProperties = (option && option.ignoreProperty) || [];
 
@@ -401,16 +401,16 @@ module.exports = {
         //----------------------------------------------------------------------
         const visited = new WeakSet();
 
-        function getNearestAncestor(node, type) {
-          let temp = node.parent;
-          while (temp) {
-            if (temp.type === type) {
-              return temp;
-            }
-            temp = temp.parent;
-          }
-          return temp;
-        }
+        // function getNearestAncestor(node, type) {
+        //   let temp = node.parent;
+        //   while (temp) {
+        //     if (temp.type === type) {
+        //       return temp;
+        //     }
+        //     temp = temp.parent;
+        //   }
+        //   return temp;
+        // }
 
         function isString(node) {
           return typeof node.value === "string";
@@ -458,6 +458,8 @@ module.exports = {
             }
           }
           // • • • • •
+
+          console.log(node);
 
           context.report({ node, message });
         }
@@ -651,7 +653,8 @@ module.exports = {
             if (markupOnly) {
               return;
             }
-            validateLiteral(node);
+            // validateLiteral(node);
+            visited.add(node);
           },
         };
 
