@@ -238,7 +238,7 @@ module.exports = {
     "no-child-string": {
       meta: {
         docs: {
-          description: "disallow literal string",
+          description: "Cannot insert text children",
           category: "Best Practices",
           recommended: true,
         },
@@ -301,7 +301,7 @@ module.exports = {
           ...((option && option.ignore) || []),
         ].map((item) => new RegExp(item));
 
-        const message = "disallow literal string";
+        const message = "Cannot insert text children";
         //----------------------------------------------------------------------
         // Helpers
         //----------------------------------------------------------------------
