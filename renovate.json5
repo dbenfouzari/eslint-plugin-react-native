@@ -1,5 +1,8 @@
 {
-  "extends": [
-    "config:base"
-  ]
+  extends: ["config:base"],
+  prHourlyLimit: 0,
+  assignAutomerge: true,
+  automerge: true,
+  assignees: ["dbenfouzari"],
+  rebaseWhen: "behind-base-branch",
 }
