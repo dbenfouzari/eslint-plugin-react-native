@@ -618,8 +618,9 @@ module.exports = {
           },
 
           "CallExpression Literal"(node) {
-            const parent = getNearestAncestor(node, "CallExpression");
-            if (isValidFunctionCall(parent)) visited.add(node);
+            // const parent = getNearestAncestor(node, "CallExpression");
+            // if (isValidFunctionCall(parent)) visited.add(node);
+            visited.add(node);
           },
 
           "SwitchCase > Literal"(node) {
