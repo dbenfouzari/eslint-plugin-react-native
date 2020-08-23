@@ -1,5 +1,9 @@
 src/
 yarn.lock
-node_modules/
+node_modules
 tests/
 .github/
+example/
+.babelrc
+.eslintrc
+renovate.json5
