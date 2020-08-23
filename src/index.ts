@@ -305,6 +305,23 @@ module.exports = {
         //----------------------------------------------------------------------
         // Helpers
         //----------------------------------------------------------------------
+        const report = (node) => {
+          const errorValue =
+            node.type === "TemplateLiteral"
+              ? `TemplateLiteral: ${node.expressions[0].name}`
+              : node.value.trim();
+
+          const formattedErrorValue =
+            errorValue.length > 0
+              ? `Raw text \`${errorValue}\``
+              : "Whitespace(s)";
+
+          context.report({
+            node,
+            message: `${formattedErrorValue} cannot be used as children`,
+          });
+        };
+
         function match(str) {
           return whitelists.some((item) => item.test(str));
         }
@@ -461,7 +478,7 @@ module.exports = {
 
           console.log(node);
 
-          context.report({ node, message });
+          report(node);
         }
 
         // onlyAttribute would turn on markOnly
@@ -548,7 +565,7 @@ module.exports = {
               return;
             }
 
-            context.report({ node, message });
+            report(node);
           },
           // ─────────────────────────────────────────────────────────────────
 
@@ -643,7 +660,7 @@ module.exports = {
               const trimed = raw.trim();
               if (!trimed) return;
               if (match(trimed)) return;
-              context.report({ node, message });
+              report(node);
               return true; // break
             });
             // const trimed = node.value.trim();
