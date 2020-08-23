@@ -7,3 +7,4 @@ example/
 .babelrc
 .eslintrc
 renovate.json5
+index.ts
