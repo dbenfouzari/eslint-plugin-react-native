@@ -5,7 +5,7 @@
   "license": "MIT",
   "devDependencies": {
     "@dbenfouzari/eslint-plugin-react-native": "../",
-    "eslint": "7.8.0"
+    "eslint": "7.8.1"
   },
   "dependencies": {
     "react": "^16.13.1"
